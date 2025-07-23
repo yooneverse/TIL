@@ -179,63 +179,70 @@ return  문은 ```함수의 실행을 종료```하고, 결과를 호출 부분�
 
 정의이기에, 완료를 return으로 표시해야 함
 
+def my_func():
+    print(1)
 
+print(my_func())
 
-```함수호출```
+```
+실행은 호출하는 print부터 실행하나, 출력하려면 함수가 다 끝나야 호출 가능하기 때문에 그 과정에서 print(1)이 먼저 출력되는 것. return이 없으니까 아래가 나중에 출력.
+```
 
-함수 사용을 위해 '호출' 필요
+**<함수호출>**
 
-함수의 이름과 소괄호를 활용해 호출
+- 함수 사용을 위해 '호출' 필요
 
-필요한 경우 인자(argument)를 전달해야 함
+- 함수의 이름과 소괄호를 활용해 호출
 
-전달된 인자는 함수 정의 시 작성한 매개변수에 대입됨
+- 필요한 경우 인자(argument)를 전달해야 함
 
-
-
-
-
-\# 함수 정의
-
-def make\_sum(pram1, pram2):
-
-&nbsp;   """이것은 두 수를 받아
-
-&nbsp;   두 수의 합을 반환하는 함수입니다.
-
-&nbsp;   >>> make\_sum(1,2)
-
-&nbsp;   3
-
-&nbsp;   """
+- 전달된 인자는 함수 정의 시 작성한 매개변수에 대입됨
 
 
 
-&nbsp;   # result = pram1 + pram2
 
-&nbsp;   # return result
+```
+# 함수 정의
 
-&nbsp;   # 위처럼도 표현 가능
+def make_sum(pram1, pram2):
+
+   """이것은 두 수를 받아
+
+   두 수의 합을 반환하는 함수입니다.
+
+   >>> make_sum(1,2)
+
+   3
+
+   """
+
+ # result = pram1 + pram2
+
+   # return result
+
+   # 위처럼도 표현 가능
 
 
 
-&nbsp;   return pram1 + pram2
+   return pram1 + pram2
 
 
 
-\# 함수 호출 및 반환 값 할당 # 함수 하나가 존재한다 해서 호출했을 때 결과가 나오지 않으니 할당해야 함
+# 함수 호출 및 반환 값 할당 # 함수 하나가 존재한다 해서 호출했을 때 결과가 나오지 않으니 할당해야 함
 
-sum\_result = make\_sum(100, 30)
+sum_result = make_sum(100, 30)
 
-print(sum\_result)
+print(sum_result)
+```
 
-
+> Q .
 ![alt text](image.png)
 
-
-\# print() 함수는 반환값이 없다.
+```
+# print() 함수는 반환값이 없다.
 return_value = print()
 print(return_value)
+```
 
 반환값은 None
 출력과 반환값은 다른 개념.
@@ -249,6 +256,7 @@ return_value = print()
 print(return_value) 에서
 할당문은 오른쪽의 코드가 실행 (오른쪽 값 평가)하기에, print함수의 평가 결과 값이 무엇인지를 보아야 하는데, 반환값을 알아보고자 한다면 None이 평가 값으로 왼쪽으로 할당되는 것. 또한 return_value가 값을 호출하여 'None'이라는 결과가 나오게 되는 것
 
+---
 # 매개변수와 인자
 
 **매개변수**
@@ -319,6 +327,8 @@ greet(age=35, name='Dave')  # 안녕하세요, Dave님! 35살이시군요.
 
 greet(age=35, 'Dave')  # Positional argument cannot appear after keyword arguments
 > 키워드 인자를 넣고 뒤쪽에 위치 인자를 넣는 것은 불가. 호출 시 키워드 인자는 위치 인자 뒤에 위치해야 함
+
+>위치 인자는 정확한 순서를 알아야 하지만, 키워드 인자는 순서를 몰라도 입력하여 실행 가능. 다만 위 사항 주의할 것.
 
 4. 임의의 인자 목록
    - 정해지지 않은 개수의 인자를 처리
@@ -391,17 +401,16 @@ def factorial(n):
     if n == 0:
         return 1
     else:
-        # 재귀 호출: n과 n-1의 팩토리얼을 곱한 결과를 반환
-        return n * factorial(n - 1)
-
-
-\# 팩토리얼 계산 예시
-print(factorial(5))  # 120
+        #재귀 호출:n과 n-1의 팩토리얼을 곱한 결과 반환
+        return n * factorial(n-1)
+    
+result = factorial(5)
+print(result) #120
 
 자기 자신에게 같은 문제를 다른 input을 통해서 해결
 
 **재귀함수 특징**
-- 특정 알고리즘 식을 표현할 때 변수 사용이 줄어들며, 코드 가독성이 높아짐
+- 특정 알고리즘 식을 표현할 때 변수 사용이 줄어들며, 코드의 가독성이 높아짐
 - 1개 이상의 base case(종료되는 상황)가 존재하고, 수렴하도록 작성
   
 **기억해야 할 것**
@@ -420,7 +429,7 @@ print(factorial(5))  # 120
 
 ---
 # 내장 함수
-: 파이썬이 기본적으로 제공하는 함수로서, 별도의  import 없이 바로 사용가능한 빌트인 함수
+: 파이썬이 기본적으로 제공하는 함수로서, 별도의  import(무언가를 포함하고자 명령) 없이 바로 사용가능한 빌트인 함수
 
 내부 동작 원리를 이해하면 효율성, 효과성 증진 가능
 
@@ -442,15 +451,28 @@ print(factorial(5))  # 120
   - local scope : 함수가 만들어서, 함수 내부에서만 참조 가능한 공간
   
   2. variable(변수)
-  - global : global scope에 정의된 변수
-  - local : local scope에 정의된 변수
+  - global variable : global scope에 정의된 변수
+  - local variable : local scope에 정의된 변수
+
+> 로컬 변수는 로컬 범위에서만 적용됨
+
+def myfunction1():
+    num1 = 10
+    print(num1)
+
+def myfunction2():
+    print(num1)
+
+myfunction1()
+myfunction2()
+
 
 num은 local scope에 존재하여 외부에서 사용불가하여, 변수의 수명주기가 달라지게 됨.
 
 변수의 수명주기는 변수가 선언되는 위치와 scope에 따라 결정됨
 45 슬라이드 참고
 
-빌트인 = 영원히
+빌트인 = 파이썬 실행 이후부터 영원히 유지
 글로벌 = 빌트인보다는 짧음, 모듈이 호출된 시점 이후 혹은 인터프리터가 끝날 때까지 유지
 로컬 = 함수 호출 때 생성되고, 함수 종료될 때까지(만) 유지
 
@@ -498,7 +520,7 @@ num = 0  # 전역 변수
 
 
 def increment():
-    global num  # num를 전역 변수로 선언 #알고리즘에서 많이 보게 될 형태
+    global num  # num를 전역 변수로 선언 #알고리즘에서 많이 보게 될 형태 #밖에 있는 num임을 지칭
     num += 1
 
 
