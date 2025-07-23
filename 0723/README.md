@@ -531,6 +531,14 @@ increment()
 print(num)  # 1
 ```
 
+num =10
+
+def myfunction():
+    global num
+    num = 5
+   
+print(num) # 10
+
 \# ‘global’ 키워드 주의사항 - 1
 \# global 키워드 선언 전에 참조불가
 num = 0
@@ -670,6 +678,7 @@ print 함수의 패킹 예시
 - 인자 개수에 상관 없이 튜플 하나로 패킹 되어서 내부에서 처리
 - print(*objects,sep=' ',end='\n', file=sys.stdout, flush=False)
 - 모든 비 키워드 인자는 str( )이 하듯이 문자열로 변환된 후 스트림에 쓰이는데, sep으로 구분되고 end를 뒤에 붙임
+- sep > 구분선
 
 ex.
 print('hello', end=' ')
@@ -697,6 +706,14 @@ def my_function(x, y, z):
 
 my_dict = {'x': 1, 'y': 2, 'z': 3}
 my_function(**my_dict)  # 1 2 3
+
+def my_func(x, y, z) :
+    print(x,y,z)
+
+my_dict = {'x' : 1, 'y':2, 'z': 3, 'w':4}
+my_func(**my_dict)
+
+\# TypeError: my_func() got an unexpected keyword argument 'w'
 
 ---
 참고
