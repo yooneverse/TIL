@@ -813,3 +813,7 @@ sorted_students = sorted(students, key=lambda student_data: student_data[0])
 print(sorted_students)  # [(19, 95), (21, 90), (25, 85)]
 
 ```
+
+greet("time" = "morning", "name" = "Tom") 이렇게 하면 키워드 인자가 아닌 각각의 문자열로 인식하게 되어 옳지 않음.
+
+10번 다시 정리
