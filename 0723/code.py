@@ -20,3 +20,17 @@ def outer_func():
 outer_func()
 print(x,y)
 
+packed_values = 1,2,3,4,5
+print(packed_values)
+
+def my_func(*args) : #args는 *을 활용한 패킹을 뜻하는 이름
+    print(args)       
+    print(type(args)) 
+
+my_func(1,2,3,4,5) # 함수 호출
+
+def my_func2(**kwargs) :
+    print(kwargs)
+    print(type(kwargs))
+                          # 이 위 내용까지가 정의 부분
+my_func2(a=1, b=2, c=3)    # 여기에서 함수호출을 하는 것. 따라서 호출되어야 하는 함수가 아래로 위치하는 것
