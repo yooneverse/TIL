@@ -73,6 +73,8 @@ print(person\_keys) # dict\_keys(\['name', 'age', 'country'])
 
 \# .items()
 
+튜플 형태로 묶어서 보여줌
+
 
 
 ---
@@ -493,3 +495,51 @@ my_dict = {{3, 2}: 'a'}
 > BNF와 같은 표기법을 사용하는 이유
 
 : 서로 다른 프로그래밍 언어, 데이터 형식, 프로토콜 등 문법을 통일하여 정의하기 위함
+
+---
+TABLE_SIZE = 1024
+
+hash_table = [0] * TABLE_SIZE # Hash table이 주는 값만 사용 가능
+
+# 간단한 해쉬값을 얻는 함수(실제 해쉬함수는 더 복잡)
+# x:우리가 해시테이블에 저장하려는 원소(숫자로 표현)
+def simple_hash(x, seed):
+    # 어떤 값이든 TANLe_SIZE로 나눈 나머지는 TABLE_SIZE 보다 작음(인덱스 범위)
+    return (x + seed) % TABLE_SIZE
+
+# 이 함수의 반환값을 인덱스로 사용
+# print(hash("a"))
+
+SEED =1
+x = 6
+print(simple_hash(x,SEED))
+
+# 해쉬함수의 반환값을 인덱스로 사용
+idx = simple_hash(6, SEED)
+hash_table[idx] = x # 해쉬함수의 결과값을 인덱스로 사용해서 x 저장
+
+my_set = {1,2,3,"a", "b", "c"}
+
+print(my_set.pop())
+
+x = 101500
+idx = simple_hash(x, SEED)
+print(x, idx)
+hash_table[idx] = x
+
+
+# pop 동작 원리 (간단히)
+for i in range(TABLE_SIZE):
+    if hash_table[i]:
+        print(f'값이 있음 : {hash_table[i]}')
+
+for phone in data: #data 리스트를 순회하는 반복
+#폰 데이터 하나에 대해 반복
+	for key in key_list:
+#key에 해당하는 value가 없으면 =>None 반환
+#None은 False로 취급되니까 not으로 True로 바꿈
+	if not phone.get(key):
+#key에 해당하는 value가 없으면 value에 "unknown"이라는 문자열 할당
+		phone.setdefault(key, "unknown")
+	print(f"{key} 으/는 {phone[key]}입니다.")
+print()
