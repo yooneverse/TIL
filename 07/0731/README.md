@@ -341,6 +341,9 @@ Person1.population으로 적어도, 인스턴스 안에 population 변수가 없
 따옴표 없이 적으면 키워드로 인식하는 것이 파이썬
 따옴표 붙이는 순간 문자열 값이 됨.
 
+![alt text](image.png)
+
+실행할 때 정해진다는 말
 
 
 
