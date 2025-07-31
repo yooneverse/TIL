@@ -326,7 +326,8 @@ Person1.population으로 적어도, 인스턴스 안에 population 변수가 없
 
 
 
-
+---
+@데코레이터
 
 
 
