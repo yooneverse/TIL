@@ -82,11 +82,24 @@ a-2
 [a-1 보완본]
 ![alt text](image-1.png)
 
-N * M 배열의 크기와 저장된 값이 주어질 때 합을 구하는 법
+> N * M 배열의 크기와 저장된 값이 주어질 때 합을 구하는 법
 
 i와 j를 기준점으로 잡아서 코드 짜는 법 (부분배열의 기준 원소 i, j)
+```
+N,M = map(int, input())
 
-![alt text](image-4.png)
+matrix = [list(map(int, input().split())) for _in range(N)]
+
+total = 0
+
+# i는 행 번호(큰 리스트의 인덱스 번호)
+for i in range(N):
+  # j는 열 번호(큰 리스트 안에 있는 작은 리스트의 인덱스 번호)
+  for j in range(M):
+    total += matrix[i][j]
+
+print(total)
+```
 
 [슈도코드]
 ```
@@ -107,12 +120,37 @@ arr[i + p][j + q]는 2차원 배열 arr에서 (i+p, j+q) 위치에 있는 값을
 
 ---
 
-정렬할 때 고정하는 걸 코드에서 제일 바깥으로 뺌
+* 열 우선 순회
+
 ![alt text](image-2.png)
+```
+N,M = map(int, input())
+
+matrix = [list(map(int, input().split())) for _in range(N)]
+
+total = 0
+
+# i는 행 번호(큰 리스트의 인덱스 번호)
+for j in range(N):
+  # j는 열 번호(큰 리스트 안에 있는 작은 리스트의 인덱스 번호)
+  for iin range(M):
+    total += matrix[i][j]
+
+print(total) 
+ ``` 
+> 순회가 먼저 끝나는 쪽이 안쪽에 들어가야 함
+
+---
 
 **지그재그 순회**
 
-: 원리 이해해두기
+![alt text](image-8.png)
+
+오른쪽으로 순회할 때랑 왼쪽으로 순회할 때를 나누기 위해서, (i%2)를 넣음
+
+홀수인지 짝수인지 판별하는 용도
+
+
 
 ---
 
@@ -122,11 +160,12 @@ arr[i + p][j + q]는 2차원 배열 arr에서 (i+p, j+q) 위치에 있는 값을
 
 - *IM 통과에 필수개념
 - 대각선으로 접근해야 하는 경우도 존재하며 상하좌우 네 방향, 혹은 여덟 방향 전부를 원소에 접근하여 연산하기도 함.
+
+
 - 인덱스(i, j)인 칸의 상하좌우 칸 (ni, nj), 즉 N * N 배열에서 각 원소를 중심으로, 상하좌우 k칸의 합계 중 최대값(k = 2)
 
 ![alt text](image-3.png)
 
-오른쪽 칸 예시를 봤을 때, (i,j) 기준으로 인덱스 변화가 이루어지는 방식을 이해 가능
 
 **개념정리**
 
@@ -147,7 +186,7 @@ for d in range(4):
     ni = i + di[d]  # 새로운 행
     nj = j + dj[d]  # 새로운 열
     
-    # 배열 범위 안에 있는지 확인
+    # 배열 범위 안에 있는지 확인, 유효한 인덱스인지 검사
     if 0 <= ni < N and 0 <= nj < M:
         print(f"이동한 위치: ({ni}, {nj}) → 값: {array[ni][nj]}")
 ```
@@ -170,7 +209,8 @@ for d in range(4):
 
 🔹 di, dj 선언 위치
 
-"di, dj를 바깥에 만들어 놓고 for문을 써도 되고, for문에서 직접 만들어서 써도 된다"
+"di, dj를 바깥에 만들어 놓고 for문을 써도 되고, for문에서 직접 만들어서 써도 된다" 그대신 들여쓰기 조심하기
+
 ```
 di = [-1, 1, 0, 0]
 dj = [0, 0, -1, 1]
@@ -196,7 +236,8 @@ for i in range(N):         # 모든 행
         s = arr[i][j]      # 중심점 값 (i, j)
 for di, dj in [[0,1],[1,0],[0,-1],[-1,0]]:  # → ↓ ← ↑
 
-for c in range(1, k+1):
+for c in range(1, k+1): 
+#0부터 시작하면 제자리부터 되어서 매번 중복이 일어나버림
     ni, nj = i + di*c, j + dj*c
     if 0<=ni<N and 0<=nj<N:
         s += arr[ni][nj]
@@ -281,5 +322,10 @@ j는 항상 i보다 작은 값이므로 if i < j: 조건이 필요 없어짐
 -> 중심원소가 중복되므로 한 번은 빼줘야 함.
 
 S-= arr[2][2]
+
+꼭 디버깅 장치 지워서 제출해달라
+ex. import sys/output을 받아놓고 거기다 다른 거 쓰면 오답이 뒤집어써짐
+
+
 
 
