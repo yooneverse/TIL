@@ -37,7 +37,7 @@ N,M = map(int,input().split())
 ```
 여기서 N은 세로, M은 가로
 ```
-matrix = matrix = [list(map(int, input().split())) for _ in range(N)]
+matrix = [list(map(int, input().split())) for _ in range(N)]
 ```
 range는 세로인 N 기준으로 들어가야 함
 
