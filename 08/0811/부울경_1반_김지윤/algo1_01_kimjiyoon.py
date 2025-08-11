@@ -6,8 +6,8 @@ for tc in range(1, T + 1):
     N, M, K = input().split()
 
     # N*N 배열
-    # box = [list(input().split()) for _ in range(N)] ** 틀림
-    space = [list(input()) for _ in range(N)]
+    box = [list(input().split()) for _ in range(N)]
+    # space = [list(input()) for _ in range(N)]
     # 입력받아서 숫자로 못 바꾸니까 리스트로만 문자열 그대로 처리 N줄 입력 받음
 
     # 별 자리
