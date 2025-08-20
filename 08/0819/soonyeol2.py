@@ -10,7 +10,7 @@ N = 3
 
 # idx : idx 번에 있는 원소를 다른 위치와 자리 교환
 def make_perm(idx):
-    
+
     # 1. 종료 조건
     if idx == N:
         print(lst)
