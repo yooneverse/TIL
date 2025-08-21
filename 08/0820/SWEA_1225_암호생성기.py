@@ -85,6 +85,48 @@ for _ in range(1, T + 1):  # 테스트 케이스 순회
     # 출력 (리스트 풀어서 출력)
     print(f"#{n}", *password)
 
+T = 10  # 고정된 테스트케이스 수
+
+for _ in range(1, T + 1):  # 테스트 케이스 순회
+    n = int(input())  # 테스트 케이스 번호
+    arr = list(map(int, input().split()))  # (1) 숫자 8개를 입력 받음
+
+    N = 8
+    q = [0] * (N + 1)   # 큐 초기화 (원형큐: front 자리까지 해서 +1)
+    front = rear = 0
+
+    # arr 원소를 큐에 넣기
+    for i in arr:
+        rear = (rear + 1) % (N + 1)
+        q[rear] = i
+
+    cycle = 1  # (2) 사이클 만들어서, 사이클 내 숫자만큼 front 값 빼버리기
+    while True:
+        # dequeue
+        front = (front + 1) % (N + 1)
+        x = q[front] - cycle
+
+        cycle += 1
+        if cycle > 5:
+            cycle = 1
+
+        if x <= 0:
+            rear = (rear + 1) % (N + 1)  # (3-1) 숫자가 감소할 때, 0보다 작아지는 경우 0으로 유지
+            q[rear] = 0
+            break  # (3-2) 프로그램 종료
+
+        else:  # 0이 아니면
+            rear = (rear + 1) % (N + 1)
+            q[rear] = x
+
+    # 출력
+    result = []
+    i = (front + 1) % (N + 1)
+    while i != (rear + 1) % (N + 1):
+        result.append(q[i]) # front 다음 원소부터 rear까지 차례대로 뽑아내기
+        i = (i + 1) % (N + 1) # 원형이니까 +1을 할 때 % (N+1)을 해줘서 인덱스가 0으로 돌아가도록
+
+    print(f"#{n}", *result)
 
 
 
