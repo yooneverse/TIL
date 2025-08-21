@@ -51,3 +51,11 @@ for tc in range(1, T + 1):
     solve = bfs(si, sj)
     print(f"#{tc} {solve}")
 
+
+
+
+
+
+
+
+
