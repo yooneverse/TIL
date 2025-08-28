@@ -26,8 +26,8 @@ def dfs(x, y, length):
     for d in range(4):
         nx= x + dx[d] 
         ny= y + dy[d]
-        if 0 <= nx < N and 0 <= ny < N:
-            if matrix[nx][ny] == min_val:
+        if 0 <= nx < N and 0 <= ny < N: # 구간 내에 있는지 확인
+            if matrix[nx][ny] == min_val: #좌표 값이 최소 값이라면
                 dfs(nx, ny, length + 1)
 
 for tc in range(1, T+1):
