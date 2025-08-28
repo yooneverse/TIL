@@ -478,3 +478,18 @@ flex-grow를 준만큼 균등하게 나눠서 배분, 배율은 아님!
 padding 또는 border 로 요소 사이에 경계 추가.
 
 부모 요소에 overflow:hidden, display:flex, display:grid 등을 적용하면 상쇄 방지 가능.
+
+
+align_items는 각 줄 안에서 몇 개건 이동
+align_content 줄이 여러 개 있어야 이동이 보임
+
+
+---
+채팅 웹 서비스 구현
+HTML, CSS, JS
+React, TS(타입스크립트)
+
+
+---
+정확하게 어디다 쓰는지 알기
+flex는 '배치를 다시 하고 싶은 영역'에 써주기

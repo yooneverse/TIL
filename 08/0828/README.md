@@ -113,6 +113,14 @@ div class="col-4" 이면 4칸을 직접 할당하는 것.
 - CSS 레이아웃 기술은 상호 보완적이며, 실제 개발 경험이 중요
 
 
+---
+flex-grow는 아이템이 flex-basis의 값보다 커질 수 있는지 결정하는 속성
+기본값은 0으로, 0보다 큰 값이 세팅되면 해당 아이템이 Flexible Box로 변하고 원래의 크기보다 커지며 빈 공간을 메우게 된다.
 
 
+.item1 { flex-grow: 1; }
+.item2 { flex-grow: 2; }
+.item3 { flex-grow: 1; }
+
+<div class="row row-cols-1 row-cols-md-2 g-4"> :  한 줄에 컬럼 하나라는 뜻의 row-cols-1
 
