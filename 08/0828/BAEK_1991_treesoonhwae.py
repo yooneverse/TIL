@@ -31,27 +31,27 @@ for _ in range(N):
     p, l, r = input().split()
 
     # 부모 등록
-    if p not in nodes:
-        nodes[p] = idx
-        value[idx] = p
-        idx += 1
-    pi = nodes[p]
+    if p not in nodes:                  # 만약 부모 문자가 아직 번호가 없으면
+        nodes[p] = idx                  # 새 번호(idx)를 배정 (A=1, B=2 … 순서대로)
+        value[idx] = p                  # value[idx]에 문자 저장 → 번호→문자 매핑
+        idx += 1                        # 다음 새 노드는 다음 번호로
+    pi = nodes[p]                       # 부모 문자의 인덱스 번호를 pi에 저장
 
     # 왼쪽 자식 등록
-    if l != '.':
-        if l not in nodes:
-            nodes[l] = idx
-            value[idx] = l
-            idx += 1
-        left[pi] = nodes[l]
+    if l != '.':                        # 왼쪽 자식이 '.'이 아니면 (자식 있음)
+        if l not in nodes:              # 자식 문자가 아직 등록되지 않았다면
+            nodes[l] = idx              # 새 번호 배정
+            value[idx] = l              # 해당 번호 위치에 문자 저장
+            idx += 1                    # 다음 번호 준비
+        left[pi] = nodes[l]             # 부모 인덱스 pi의 왼쪽 자식에 등록된 번호 연결
 
     # 오른쪽 자식 등록
-    if r != '.':
-        if r not in nodes:
-            nodes[r] = idx
-            value[idx] = r
-            idx += 1
-        right[pi] = nodes[r]
+    if r != '.':                        # 오른쪽 자식이 '.'이 아니면 (자식 있음)
+        if r not in nodes:              # 자식 문자가 아직 등록되지 않았다면
+            nodes[r] = idx              # 새 번호 배정
+            value[idx] = r              # 해당 번호 위치에 문자 저장
+            idx += 1                    # 다음 번호 준비
+        right[pi] = nodes[r]            # 부모 인덱스 pi의 오른쪽 자식에 등록된 번호 연결
 
 # 루트는 항상 'A'
 root = nodes['A']
